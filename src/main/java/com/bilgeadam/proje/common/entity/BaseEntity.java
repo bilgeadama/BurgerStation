@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,13 +16,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @MappedSuperclass
 @EntityListeners({AuditingEntityListener.class})
+@Setter
+@Getter
 @SuperBuilder(toBuilder = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Where(clause = "durum <> 0")
 public abstract class BaseEntity {
 
     /**

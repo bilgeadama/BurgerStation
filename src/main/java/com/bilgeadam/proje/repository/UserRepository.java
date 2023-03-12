@@ -15,13 +15,13 @@ public interface UserRepository extends BaseRepository<User, UUID> {
     //int deger varsa user icinde between ile arama
     List<User> findByAgeBetween(int ageStart, int ageEnd);
 
-    //email parametreli distinc ile arama
+    //email parametreli distinc ile Arama
 
 
     //icinde or & and in oldugu bi query
 
     //JPQL ile Driven query yaz
-    //Role tablosunda name i olan ve userleri getiren, role ile user arasindaki iliskiyi getiren JPQL
+    //Role tablosunda name i olan ve userleri getiren, role ile user arasindaki iliskiyi getiren JPQLL
 
     @Query("SELECT c FROM users c INNER JOIN roles r ON Id WHERE r.name =?1")
     List<Role> findByRoleName(String name);

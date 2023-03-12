@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.bilgeadam.proje</groupId>
     <artifactId>BurgerStation</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.7-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>BurgerStation</name>
     <description>A food management system</description>

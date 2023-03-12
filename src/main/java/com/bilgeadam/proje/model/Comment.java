@@ -27,6 +27,6 @@ public class Comment extends BaseEntity {
      * Food Relation
      */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "food_id")
     private Food food;
 }

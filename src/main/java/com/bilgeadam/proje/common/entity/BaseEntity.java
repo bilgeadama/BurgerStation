@@ -1,5 +1,6 @@
 package com.bilgeadam.proje.common.entity;
 
+import com.bilgeadam.proje.consts.EntityConstants;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,7 @@ import java.util.UUID;
 @SuperBuilder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Where(clause = "durum <> 0")
+@Where(clause = EntityConstants.WHERE_CLAUSE)
 public abstract class BaseEntity {
 
     /**
@@ -66,8 +67,8 @@ public abstract class BaseEntity {
      * State of entity
      * deleted = 0, undeleted=1
      */
-    @Column(name = "state", nullable = false, updatable = false)
-    private short state;
+    @Column(name = "state", nullable = false)
+    private short state =1;
 
     /**
      * Entity Version
@@ -75,5 +76,4 @@ public abstract class BaseEntity {
     @Version
     @Column(name = "version", nullable = false)
     private Long version;
-
 }

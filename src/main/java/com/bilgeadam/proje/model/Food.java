@@ -1,21 +1,22 @@
-package com.bilgeadam.proje.model.entity;
+package com.bilgeadam.proje.model;
 
 import com.bilgeadam.proje.common.entity.BaseEntity;
+import com.bilgeadam.proje.consts.MessageConstants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.SQLDelete;
 
 import java.util.Set;
 
-//@SQLDelete(sql="UPDATE user set durum=0 where id= ? and version=?")
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Entity
+@SQLDelete(sql="UPDATE burger_station.foods set state=0 where id= ? and version=?")
 @Table(name = "foods")
 public class Food extends BaseEntity {
 
@@ -23,14 +24,14 @@ public class Food extends BaseEntity {
      * Food category information
      */
 //    todo kategori tablosu olusturulup baglanabilir veya enum olarak tanımlanabilir.
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Column(name = "category")
     private String category;
 
     /**
      * Food title information
      */
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 5, max = 30)
     @Column(name = "title")
     private String title;
@@ -38,7 +39,7 @@ public class Food extends BaseEntity {
     /**
      * Food description information
      */
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 4, max = 500)
     @Column(name = "description")
     private String description;
@@ -46,7 +47,7 @@ public class Food extends BaseEntity {
     /**
      * Food price information
      */
-    @NotNull
+    @NotNull(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Min(50)
     @Max(1000)
     @Column(name = "price")
@@ -56,9 +57,10 @@ public class Food extends BaseEntity {
      * Foods comments relation
      */
 //            --version - 1---
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "food_id",referencedColumnName = "id")
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "food_id",referencedColumnName = "id")
 //            --version - 2 --
-//    @OneToMany(mappedBy = "food",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "food",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
+    @ToString.Exclude
     private Set<Comment> comments;
 }

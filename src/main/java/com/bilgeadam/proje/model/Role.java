@@ -1,4 +1,4 @@
-package com.bilgeadam.proje.model.entity;
+package com.bilgeadam.proje.model;
 
 import com.bilgeadam.proje.common.entity.BaseEntity;
 import jakarta.persistence.Column;
@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
 
 import java.util.UUID;
 
@@ -16,8 +17,8 @@ import java.util.UUID;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
+@SQLDelete(sql="UPDATE burger_station.roles set state=0 where id= ? and version=?")
 @Table(name = "roles")
-//@SQLDelete(sql="UPDATE role set state=0 where id= ? and version=?")
 public class Role extends BaseEntity {
 
     /**

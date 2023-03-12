@@ -1,6 +1,7 @@
-package com.bilgeadam.proje.model.entity;
+package com.bilgeadam.proje.model;
 
 import com.bilgeadam.proje.common.entity.BaseEntity;
+import com.bilgeadam.proje.consts.MessageConstants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -9,22 +10,23 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-//@SQLDelete(sql="UPDATE user set state=0 where id= ? and version=?")
+@SQLDelete(sql="UPDATE burger_station.users set state=0 where id= ? and version=?")
+@Table(name = "users")
 public class User extends BaseEntity {
 
     /**
      * username information in User Table
      */
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 4, max = 15)
     @Column(name = "user_name")
     private String userName;
@@ -32,7 +34,7 @@ public class User extends BaseEntity {
     /**
      * password information in User Table
      */
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 4, max = 50)
     @Column(name = "password", nullable = false)
     private String password;
@@ -48,7 +50,7 @@ public class User extends BaseEntity {
      * Entity Email information
      */
     @Email
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 10, max = 50)
     @Column(name = "email")
     private String email;
@@ -63,7 +65,7 @@ public class User extends BaseEntity {
     /**
      * User gender information
      */
-    @NotBlank
+    @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Column(name = "gender")
     private String gender;
 

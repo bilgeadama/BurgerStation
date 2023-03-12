@@ -1,4 +1,4 @@
-package com.bilgeadam.proje.model.entity;
+package com.bilgeadam.proje.model;
 
 import com.bilgeadam.proje.common.entity.BaseEntity;
 import jakarta.persistence.*;
@@ -27,5 +27,6 @@ public class Comment extends BaseEntity {
      * Food Relation
      */
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
     private Food food;
 }

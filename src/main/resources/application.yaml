@@ -3,7 +3,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/burgerStation
     username: postgres
-    password: calpay@2626
+    password: 04071982
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:

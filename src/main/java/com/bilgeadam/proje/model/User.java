@@ -3,9 +3,7 @@ package com.bilgeadam.proje.model;
 import com.bilgeadam.proje.common.entity.BaseEntity;
 import com.bilgeadam.proje.consts.MessageConstants;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -61,6 +59,14 @@ public class User extends BaseEntity {
     @Size(min = 6, max = 20)
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    /**
+     * User age information
+     */
+    @Min(18)
+    @Max(100)
+    @Column(name = "age")
+    private int age;
 
     /**
      * User gender information

@@ -23,7 +23,7 @@ public interface UserRepository extends BaseRepository<User, UUID> {
     //JPQL ile Driven query yaz
     //Role tablosunda name i olan ve userleri getiren, role ile user arasindaki iliskiyi getiren JPQL
 
-    @Query("SELECT c FROM users c INNER JOIN roles r ON Id WHERE r.name =?1")
+    @Query("SELECT c FROM Role c INNER JOIN c.userId  WHERE c.name =?1")
     List<Role> findByRoleName(String name);
 
 

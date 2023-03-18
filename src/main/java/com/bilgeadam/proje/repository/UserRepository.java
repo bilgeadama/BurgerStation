@@ -1,8 +1,8 @@
 package com.bilgeadam.proje.repository;
 
 import com.bilgeadam.proje.common.repository.BaseRepository;
-import com.bilgeadam.proje.model.Role;
-import com.bilgeadam.proje.model.User;
+import com.bilgeadam.proje.entity.Role;
+import com.bilgeadam.proje.entity.User;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public interface UserRepository extends BaseRepository<User, UUID> {
     //JPQL ile Driven query yaz
     //Role tablosunda name i olan ve userleri getiren, role ile user arasindaki iliskiyi getiren JPQL
 
-    @Query("SELECT c FROM Role c INNER JOIN c.userId  WHERE c.name =?1")
+    @Query("SELECT c FROM Role c INNER JOIN c.user WHERE c.name =?1")
     List<Role> findByRoleName(String name);
 
 

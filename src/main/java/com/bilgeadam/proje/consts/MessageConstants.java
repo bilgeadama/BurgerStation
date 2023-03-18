@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * Adding messages to project
+ *
  * @author cem
  * @since 0.0.2
  */

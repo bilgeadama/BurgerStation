@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.bilgeadam.proje</groupId>
     <artifactId>BurgerStation</artifactId>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.8-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>BurgerStation</name>
     <description>A food management system</description>
@@ -71,6 +71,16 @@
             <artifactId>jstl-api</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.3.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.5.3.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,5 +99,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

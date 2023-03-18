@@ -1,6 +1,7 @@
-package com.bilgeadam.proje.model;
+package com.bilgeadam.proje.entity;
 
 import com.bilgeadam.proje.common.entity.BaseEntity;
+import com.bilgeadam.proje.consts.EntityConstants;
 import com.bilgeadam.proje.consts.MessageConstants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.Set;
 
@@ -16,7 +18,8 @@ import java.util.Set;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@SQLDelete(sql="UPDATE burger_station.foods set state=0 where id= ? and version=?")
+@SQLDelete(sql = "UPDATE burger_station.foods set state=0 where id= ? and version=?")
+@Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "foods")
 public class Food extends BaseEntity {
 
@@ -60,7 +63,7 @@ public class Food extends BaseEntity {
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JoinColumn(name = "food_id",referencedColumnName = "id")
 //            --version - 2 --
-    @OneToMany(mappedBy = "food",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "food", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @ToString.Exclude
     private Set<Comment> comments;
 }

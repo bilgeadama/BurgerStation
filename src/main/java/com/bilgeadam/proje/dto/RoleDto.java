@@ -1,7 +1,6 @@
 package com.bilgeadam.proje.dto;
 
 import com.bilgeadam.proje.common.dto.BaseDto;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,6 +1,7 @@
-package com.bilgeadam.proje.model;
+package com.bilgeadam.proje.entity;
 
 import com.bilgeadam.proje.common.entity.BaseEntity;
+import com.bilgeadam.proje.consts.EntityConstants;
 import com.bilgeadam.proje.consts.MessageConstants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.Set;
 
@@ -17,7 +19,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
-@SQLDelete(sql="UPDATE burger_station.users set state=0 where id= ? and version=?")
+@SQLDelete(sql = "UPDATE burger_station.users set state=0 where id= ? and version=?")
+@Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "users")
 public class User extends BaseEntity {
 

@@ -2,8 +2,6 @@ package com.bilgeadam.proje.dto;
 
 import com.bilgeadam.proje.common.dto.BaseDto;
 import com.bilgeadam.proje.consts.MessageConstants;
-import com.bilgeadam.proje.model.Comment;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

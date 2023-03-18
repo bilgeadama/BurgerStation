@@ -23,8 +23,9 @@ public abstract class BaseDto implements Serializable {
 
     /**
      * Dto state information
+     * deleted=0 or undeleted=1 values
      */
-    private short state=1;
+    private short state = 1;
 
     /**
      * Dto version information

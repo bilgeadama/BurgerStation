@@ -2,8 +2,6 @@ package com.bilgeadam.proje.dto;
 
 import com.bilgeadam.proje.common.dto.BaseDto;
 import com.bilgeadam.proje.consts.MessageConstants;
-import com.bilgeadam.proje.model.Role;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -68,5 +66,5 @@ public class UserDto extends BaseDto {
     /**
      * Relation of role entity
      */
-    private Set<Role> roleDtos;
+    private Set<RoleDto> roleDtos;
 }

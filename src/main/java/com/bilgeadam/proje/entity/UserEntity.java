@@ -22,7 +22,7 @@ import java.util.Set;
 @SQLDelete(sql = "UPDATE burger_station.users set state=0 where id= ? and version=?")
 @Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "users")
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
     /**
      * username information in User Table
@@ -89,6 +89,6 @@ public class User extends BaseEntity {
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private Set<Role> roles;
+    private Set<RoleEntity> roleEntities;
 
 }

@@ -1,5 +1,5 @@
 <p align="center">
-<b>BurgerStation</b> is a web based food management system, built usuing 
+<b>BurgerStation</b> is a web based foodEntity management system, built usuing 
 SpringBoot, Spring Mvc, Spring Data Jpa, Spring Security, Hibernate with postgreSql
 Jsp and maven for dependency management
 </p>
@@ -9,7 +9,7 @@ Jsp and maven for dependency management
 There are two type of roles , Customer and Administrator
 
 Customers can browse foods, view details, purchase foods, he/she must first register and then login to system. he/she
-can comments and replies on each food.
+can comments and replies on each foodEntity.
 
 * Customer:
     * Login
@@ -19,13 +19,13 @@ can comments and replies on each food.
     * Browse and search foods
     * Purchase foods
     * Payment with credit card
-    * Post comments on each food
+    * Post comments on each foodEntity
 
 * Administrator
-    * Manage user roles
+    * Manage userEntity roles
     * Add, remove, modify and disable/enable users
     * View users
-    * View food list
+    * View foodEntity list
     * Manage foods
 
 ## Technologies

@@ -40,12 +40,12 @@ public interface BaseMapper<T1 extends BaseDto, T2 extends BaseEntity> {
      * @param entitySet
      * @return
      */
-    List<T1> dtoListToEntityList(List<T2> entitySet);
+    List<T2> dtoListToEntityList(List<T1> entitySet);
 
     /**
      * @param entityList
      * @return
      */
-    List<T1> entiyListToDtoList(List<T2> entityList);
+    List<T1> entityListToDtoList(List<T2> entityList);
 
 }

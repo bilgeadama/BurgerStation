@@ -15,15 +15,9 @@ public interface BaseServiceInterface<DtoType extends BaseDto> {
 
     DtoType findById(UUID uuid);
 
-    DtoType update(DtoType dtoType);
-
-    List<DtoType> updateAll(List<DtoType> dtoTypes);
-
     void deleteById(UUID uuid);
 
     void delete(DtoType dtoType);
 
     void deleteAll(List<DtoType> dtoTypes);
-
-
 }

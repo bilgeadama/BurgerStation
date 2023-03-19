@@ -18,7 +18,7 @@ import org.hibernate.annotations.Where;
 @SQLDelete(sql = "UPDATE burger_station.comments set state=0 where id= ? and version=?")
 @Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "comments")
-public class Comment extends BaseEntity {
+public class CommentEntity extends BaseEntity {
 
     /**
      * Comment information
@@ -31,5 +31,5 @@ public class Comment extends BaseEntity {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id")
-    private Food food;
+    private FoodEntity food;
 }

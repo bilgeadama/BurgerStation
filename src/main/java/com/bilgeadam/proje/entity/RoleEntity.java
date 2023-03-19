@@ -18,14 +18,14 @@ import org.hibernate.annotations.Where;
 @SQLDelete(sql = "UPDATE burger_station.roles set state=0 where id= ? and version=?")
 @Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "roles")
-public class Role extends BaseEntity {
+public class RoleEntity extends BaseEntity {
 
     /**
      * Role entity user relation information
      */
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity userEntity;
 
     /**
      * Role Entity name information

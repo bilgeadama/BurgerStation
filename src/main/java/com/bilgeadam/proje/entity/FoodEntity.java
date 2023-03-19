@@ -21,7 +21,7 @@ import java.util.Set;
 @SQLDelete(sql = "UPDATE burger_station.foods set state=0 where id= ? and version=?")
 @Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "foods")
-public class Food extends BaseEntity {
+public class FoodEntity extends BaseEntity {
 
     /**
      * Food category information
@@ -65,5 +65,5 @@ public class Food extends BaseEntity {
 //            --version - 2 --
     @OneToMany(mappedBy = "food", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @ToString.Exclude
-    private Set<Comment> comments;
+    private Set<CommentEntity> commentEntities;
 }

@@ -22,4 +22,6 @@ public interface CommentService {
     void deleteById(UUID uuid);
 
     void deleteAll(List<CommentDto> CommentDtos);
+
+    String loadComments(UUID foodId);
 }

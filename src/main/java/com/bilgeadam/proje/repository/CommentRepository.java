@@ -1,16 +1,16 @@
 package com.bilgeadam.proje.repository;
 
 import com.bilgeadam.proje.common.repository.BaseRepository;
-import com.bilgeadam.proje.dto.CommentDto;
-import com.bilgeadam.proje.entity.CommentEntity;
+import com.bilgeadam.proje.entity.Comment;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface CommentRepository extends BaseRepository<CommentEntity, UUID> {
+public interface CommentRepository extends BaseRepository<Comment, UUID> {
 
     /**
      * Example of derived query in spring data jpa
@@ -18,18 +18,18 @@ public interface CommentRepository extends BaseRepository<CommentEntity, UUID> {
      * @param foodId id of food which has comments
      * @return list of comments related with selected food
      */
-    List<CommentEntity> findByFoodIdOrderByCreateDateDesc(UUID foodId);
+    List<Comment> findByFoodIdOrderByCreateDateDesc(UUID foodId);
 
-    /**
-     * Example of jpql in spring data jpa
-     *
-     * @param foodId
-     * @return
-     */
+//    /**
+//     * Example of jpql in spring data jpa
+//     *
+//     * @param foodId
+//     * @return
+//     */
 //    @Query("SELECT c from Comment c where c.food =:foodId")
 //    List<String> findByFood(@Param("foodId") UUID foodId);
-    @Query("SELECT c from CommentEntity c where c.food =?1")
-    List<String> findByFood(UUID foodId);
+//    @Query("SELECT c from Comment c where c.food = :foodId")
+//    List<String> findByFood(@RequestParam(name = "foodId") UUID foodId);
 
 
 }

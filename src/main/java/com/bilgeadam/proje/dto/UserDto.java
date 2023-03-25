@@ -2,14 +2,14 @@ package com.bilgeadam.proje.dto;
 
 import com.bilgeadam.proje.common.dto.BaseDto;
 import com.bilgeadam.proje.consts.MessageConstants;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -23,7 +23,7 @@ public class UserDto extends BaseDto {
      */
     @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 4, max = 15)
-    private String userName;
+    private String username;
 
     /**
      * password information in User Table
@@ -66,5 +66,5 @@ public class UserDto extends BaseDto {
     /**
      * Relation of role entity
      */
-    private Set<RoleDto> roleDtos;
+    private Set<RoleDto> roles;
 }

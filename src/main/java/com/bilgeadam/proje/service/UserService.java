@@ -15,11 +15,24 @@ public interface UserService {
 
     UserDto findById(UUID uuid);
 
-    UserDto findByUserName(String userName);
+    UserDto findByUsername(String userName);
 
     void delete(UserDto UserDto);
 
     void deleteById(UUID uuid);
 
     void deleteAll(List<UserDto> UserDtos);
+
+    void makePayment(int spent);
+
+    void registerUser(UserDto userDto);
+
+    void makeAdmin(UUID id);
+
+    void removeAdmin(UUID id);
+
+    void enableUser(UUID id);
+
+    void disableUser(UUID id);
+
 }

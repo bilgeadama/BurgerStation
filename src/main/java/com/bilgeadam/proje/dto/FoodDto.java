@@ -2,12 +2,12 @@ package com.bilgeadam.proje.dto;
 
 import com.bilgeadam.proje.common.dto.BaseDto;
 import com.bilgeadam.proje.consts.MessageConstants;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -47,5 +47,5 @@ public class FoodDto extends BaseDto {
     /**
      * List of Foods relation between comments
      */
-    private Set<CommentDto> commentDtos;
+    private Set<CommentDto> comments;
 }

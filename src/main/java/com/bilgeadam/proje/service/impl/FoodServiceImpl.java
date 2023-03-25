@@ -2,7 +2,7 @@ package com.bilgeadam.proje.service.impl;
 
 import com.bilgeadam.proje.common.service.impl.BaseService;
 import com.bilgeadam.proje.dto.FoodDto;
-import com.bilgeadam.proje.entity.FoodEntity;
+import com.bilgeadam.proje.entity.Food;
 import com.bilgeadam.proje.repository.FoodRepository;
 import com.bilgeadam.proje.service.FoodService;
 import com.bilgeadam.proje.service.mapper.FoodMapper;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class FoodServiceImpl extends BaseService<FoodRepository, FoodMapper, FoodEntity, FoodDto> implements FoodService {
+public class FoodServiceImpl extends BaseService<FoodRepository, FoodMapper, Food, FoodDto> implements FoodService {
 
     private final FoodValidator foodValidator;
     private final FoodRepository foodRepository;

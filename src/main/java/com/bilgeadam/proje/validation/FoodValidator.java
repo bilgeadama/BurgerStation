@@ -1,12 +1,12 @@
 package com.bilgeadam.proje.validation;
 
 import com.bilgeadam.proje.dto.FoodDto;
-import com.bilgeadam.proje.entity.FoodEntity;
+import com.bilgeadam.proje.entity.Food;
 import com.bilgeadam.proje.repository.FoodRepository;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.Objects;
 
 @Component
@@ -21,9 +21,9 @@ public class FoodValidator {
 
     public void foodSaveValidator(@Valid FoodDto foodDto) {
 
-        FoodEntity food = foodRepository.findByIgnoreCaseTitle(foodDto.getTitle());
+        Food food = foodRepository.findByIgnoreCaseTitle(foodDto.getTitle());
         if (Objects.nonNull(food)) {
-            throw new RuntimeException("This Food has benn added");
+            throw new RuntimeException("This Food has been added");
         }
     }
 }

@@ -3,8 +3,6 @@ package com.bilgeadam.proje.entity;
 import com.bilgeadam.proje.common.entity.BaseEntity;
 import com.bilgeadam.proje.consts.EntityConstants;
 import com.bilgeadam.proje.consts.MessageConstants;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +10,8 @@ import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Entity
@@ -22,7 +22,7 @@ import java.util.Set;
 @SQLDelete(sql = "UPDATE burger_station.users set state=0 where id= ? and version=?")
 @Where(clause = EntityConstants.WHERE_CLAUSE)
 @Table(name = "users")
-public class UserEntity extends BaseEntity {
+public class User extends BaseEntity {
 
     /**
      * username information in User Table
@@ -64,6 +64,12 @@ public class UserEntity extends BaseEntity {
     private String phoneNumber;
 
     /**
+     * Spent information
+     */
+    @Column(name = "spent")
+    private String spent;
+
+    /**
      * User age information
      */
     @Min(18)
@@ -89,6 +95,6 @@ public class UserEntity extends BaseEntity {
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private Set<RoleEntity> roleEntities;
+    private Set<Role> roleEntities;
 
 }

@@ -1,20 +1,20 @@
 package com.bilgeadam.proje.repository;
 
 import com.bilgeadam.proje.common.repository.BaseRepository;
-import com.bilgeadam.proje.entity.Role;
 import com.bilgeadam.proje.entity.User;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository
 public interface UserRepository extends BaseRepository<User, UUID> {
     //Like la arama
-    List<User> findByUserNameContainingIgnoreCase(String username);
+    List<User> findByUsernameContainingIgnoreCase(String username);
 
-    //Like la arama
-    Optional<User> findByUserNameIgnoreCase(String username);
+    //    @Query("SELECT c FROM User c JOIN c.roles r WHERE c.username =:username")
+    Optional<User> findByUsernameIgnoreCase(String username);
 
     //int deger varsa user icinde between ile arama
     List<User> findByAgeBetween(int ageStart, int ageEnd);

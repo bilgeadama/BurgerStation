@@ -11,7 +11,9 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -29,14 +31,13 @@ public class User extends BaseEntity {
      */
     @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     @Size(min = 4, max = 15)
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "username")
+    private String username;
 
     /**
      * password information in User Table
      */
     @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
-    @Size(min = 4, max = 50)
     @Column(name = "password", nullable = false)
     private String password;
 
@@ -44,7 +45,6 @@ public class User extends BaseEntity {
      * Confirmation password
      */
     @Transient
-    @Size(min = 4, max = 50)
     private String cPassword;
 
     /**
@@ -72,8 +72,6 @@ public class User extends BaseEntity {
     /**
      * User age information
      */
-    @Min(18)
-    @Max(100)
     @Column(name = "age")
     private int age;
 
@@ -95,6 +93,6 @@ public class User extends BaseEntity {
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private Set<Role> roleEntities;
+    private Set<Role> roles;
 
 }

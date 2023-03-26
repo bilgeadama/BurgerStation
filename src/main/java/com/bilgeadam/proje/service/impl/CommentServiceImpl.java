@@ -111,7 +111,7 @@ public class CommentServiceImpl extends BaseService<CommentRepository, CommentMa
 //        });
 
         return commentsString.toString()
-                .replaceAll("\\r\\n","<br>"); // handle new lines
+                .replaceAll("\\r\\n", "<br>"); // handle new lines
     }
 
     private StringBuilder loadReplies(UUID foodId, int marginLeft) {

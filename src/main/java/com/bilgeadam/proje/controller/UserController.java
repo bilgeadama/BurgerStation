@@ -51,16 +51,19 @@ public class UserController {
 
     @GetMapping("/disable-user/{id}")
     void disableUser(@PathVariable UUID id) {
+
         userService.disableUser(id);
     }
 
     @GetMapping("/enable-user/{id}")
     void enableUser(@PathVariable UUID id) {
+
         userService.enableUser(id);
     }
 
     @GetMapping("/make-admin/{id}")
     void makeAdmin(@PathVariable UUID id) {
+
         userService.makeAdmin(id);
     }
 

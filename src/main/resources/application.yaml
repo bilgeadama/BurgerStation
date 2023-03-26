@@ -20,7 +20,7 @@ logging:
   level:
     org:
       hibernate:
-        SQL: ERROR
+        SQL: debug
       type:
         descriptor:
           sql:

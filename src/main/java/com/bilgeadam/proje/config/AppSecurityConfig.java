@@ -13,8 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableWebSecurity
-public class AppSecurityConfig{
-
+public class AppSecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -28,24 +27,24 @@ public class AppSecurityConfig{
                 .antMatchers("/profile", "/profile-modify", "/payment", "/comments").hasAnyRole("CUSTOMER", "ADMIN")
                 .antMatchers("/").permitAll()
                 .and()
-            .formLogin()
+                .formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/login-success")
                 .failureUrl("/login?error")
                 .and()
-            .rememberMe()
+                .rememberMe()
                 .rememberMeParameter("remember-me")
                 .rememberMeCookieName("BurgerFactory-LoggedIn-User")
                 .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(68))
                 .key("ccc")
                 .and()
-            .logout()
+                .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .and()
-            .exceptionHandling()
+                .exceptionHandling()
                 .accessDeniedPage("/403");
 
         return httpSecurity.build();

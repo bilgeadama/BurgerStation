@@ -2,9 +2,7 @@ package com.bilgeadam.proje.repository;
 
 import com.bilgeadam.proje.common.repository.BaseRepository;
 import com.bilgeadam.proje.entity.Comment;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;

@@ -14,13 +14,18 @@ import java.security.Principal;
 import java.util.Objects;
 
 @Controller
-public class MainController
-{
+public class MainController {
     private final UserService userService;
 
     public MainController(UserService userService) {
 
         this.userService = userService;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @GetMapping("/")
@@ -32,7 +37,7 @@ public class MainController
     @GetMapping("/login-success")
     public String defaultAfterLogin(HttpServletRequest request) {
 
-        if (request.isUserInRole("ADMIN")){
+        if (request.isUserInRole("ADMIN")) {
             return "redirect:/dashboard";
         }
         return "redirect:/home";

@@ -7,8 +7,7 @@ import org.springframework.validation.annotation.Validated;
 @Component
 @Validated
 public class CommentValidator {
-
-
+    
     public void commentSaveValidator(FoodDto foodDto) {
 
     }

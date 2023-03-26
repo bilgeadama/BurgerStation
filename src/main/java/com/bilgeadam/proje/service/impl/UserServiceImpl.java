@@ -9,27 +9,33 @@ import com.bilgeadam.proje.repository.UserRepository;
 import com.bilgeadam.proje.service.UserService;
 import com.bilgeadam.proje.service.mapper.UserMapper;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
-@Transactional(readOnly = true)
 public class UserServiceImpl extends BaseService<UserRepository, UserMapper, User, UserDto> implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final UserMapper userMapper;
 
-    protected UserServiceImpl(UserMapper mapper, UserRepository repository, UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    protected UserServiceImpl(UserMapper mapper, UserRepository repository, UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository, UserMapper userMapper) {
         super(mapper, repository);
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.userMapper = userMapper;
     }
 
     /**
@@ -74,7 +80,7 @@ public class UserServiceImpl extends BaseService<UserRepository, UserMapper, Use
     @Override
     public UserDto findByUsername(String userName) {
 
-        return mapper.entityToDto(userRepository.findByUserNameIgnoreCase(userName).orElse(null));
+        return mapper.entityToDto(userRepository.findByUsernameIgnoreCase(userName).orElse(null));
     }
 
     /**
@@ -113,23 +119,26 @@ public class UserServiceImpl extends BaseService<UserRepository, UserMapper, Use
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        User user = userRepository.findByUserNameIgnoreCase(auth.getName())
+        User user = userRepository.findByUsernameIgnoreCase(auth.getName())
                 .orElseThrow(() -> new IllegalStateException("User doesn't exist!"));
 
         user.setSpent(user.getSpent() + spent);
+//        super.save(mapper.entityToDto(user));
+        userRepository.save(user);
     }
 
     @Override
     public void registerUser(UserDto userDto) {
 
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        super.save(userDto);
+        userDto = super.save(userDto);
+        roleRepository.save(new Role(mapper.dtoToEntity(userDto)));
     }
 
     @Override
     public void makeAdmin(UUID id) {
 
-        roleRepository.save(new Role(id,"ADMIN"));
+        roleRepository.save(new Role(id, "ADMIN"));
     }
 
     @Override
@@ -156,4 +165,20 @@ public class UserServiceImpl extends BaseService<UserRepository, UserMapper, Use
         userRepository.save(user);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        User user = userRepository.findByUsernameIgnoreCase(username).orElse(null);
+
+        if (user == null)
+            throw new UsernameNotFoundException("Username not found.");
+
+        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+
+        for (Role roles : user.getRoles())
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + roles.getName()));
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(), user.getPassword(), authorities);
+    }
 }

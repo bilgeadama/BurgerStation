@@ -27,7 +27,7 @@ public class Role extends BaseEntity {
      */
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userEntity;
+    private User user;
 
     /**
      * Role Entity name information
@@ -35,9 +35,14 @@ public class Role extends BaseEntity {
     @Column(name = "name")
     private String name;
 
+    public Role(User user) {
+        this.user = user;
+        this.name = "ADMIN";
+    }
+
     public Role(UUID id, String admin) {
 
         this.setId(id);
-        this.name =admin;
+        this.name = admin;
     }
 }

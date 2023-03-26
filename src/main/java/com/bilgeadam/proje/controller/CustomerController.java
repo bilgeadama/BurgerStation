@@ -1,14 +1,15 @@
 package com.bilgeadam.proje.controller;
 
 import com.bilgeadam.proje.dto.CommentDto;
-import com.bilgeadam.proje.dto.FoodDto;
 import com.bilgeadam.proje.dto.UserDto;
 import com.bilgeadam.proje.service.CommentService;
 import com.bilgeadam.proje.service.FoodService;
 import com.bilgeadam.proje.service.UserService;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -18,8 +19,7 @@ import java.util.UUID;
 
 @Controller
 //@RequestMapping("/customer")
-public class CustomerController
-{
+public class CustomerController {
     private final UserService userService;
     private final FoodService foodService;
     private final CommentService commentService;
@@ -30,6 +30,12 @@ public class CustomerController
         this.userService = userService;
         this.foodService = foodService;
         this.commentService = commentService;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @RequestMapping(value = "/profile", method = {RequestMethod.GET, RequestMethod.POST})

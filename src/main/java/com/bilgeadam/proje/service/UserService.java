@@ -1,11 +1,12 @@
 package com.bilgeadam.proje.service;
 
 import com.bilgeadam.proje.dto.UserDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 import java.util.UUID;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
     UserDto saveUser(UserDto UserDto);
 

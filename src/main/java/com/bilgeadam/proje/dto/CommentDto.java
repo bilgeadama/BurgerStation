@@ -25,7 +25,7 @@ public class CommentDto extends BaseDto {
     private UUID foodId;
 
     /**
-     * Food Id information
+     * Posted By information
      */
     private String postedBy;
 }

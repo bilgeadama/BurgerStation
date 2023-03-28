@@ -5,6 +5,7 @@ import com.bilgeadam.proje.dto.FoodDto;
 import com.bilgeadam.proje.entity.Comment;
 import com.bilgeadam.proje.entity.Food;
 import org.mapstruct.*;
+import org.springframework.util.CollectionUtils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,12 +18,12 @@ public interface FoodMapper extends BaseMapper<FoodDto, Food> {
     default void setParentToChild(@MappingTarget Food food) {
 
         Set<Comment> commentSet = new HashSet<>();
-        food.getComments().forEach(comment -> {
-            comment.setFood(food);
-            commentSet.add(comment);
-        });
-        food.setComments(commentSet);
-
+        if (!CollectionUtils.isEmpty(food.getComments())) {
+            food.getComments().forEach(comment -> {
+                comment.setFood(food);
+                commentSet.add(comment);
+            });
+            food.setComments(commentSet);
+        }
     }
-
 }

@@ -68,7 +68,7 @@ public abstract class BaseEntity {
      * deleted = 0, undeleted=1
      */
     @Column(name = "state", nullable = false)
-    private short state;
+    private short state=1;
 
     /**
      * Entity Version

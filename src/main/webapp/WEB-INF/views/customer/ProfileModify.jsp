@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td>Joined:</td>
-                <td>${user.regDate}</td>
+                <td>${user.createDate}</td>
             </tr>
         </table>
         <div>

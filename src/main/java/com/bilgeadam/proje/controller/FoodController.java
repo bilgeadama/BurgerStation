@@ -28,16 +28,17 @@ public class FoodController {
         return new ResponseEntity<>(foodService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/get-by-category")
-    ResponseEntity<List<FoodDto>> getByCategory(@RequestParam("categoryName") String categoryName) {
+    @GetMapping("get-foods-by-category/{category}")
+    ResponseEntity<List<FoodDto>> getByCategory(@PathVariable String category) {
 
-        return new ResponseEntity<>(foodService.findByCategory(categoryName), HttpStatus.OK);
+        return new ResponseEntity<>(foodService.findByCategory(category), HttpStatus.OK);
     }
 
     @GetMapping("/search-foods-by-name")
-    ResponseEntity<FoodDto> getByName(@RequestParam("name") String name) {
+    ResponseEntity<List<FoodDto>> getByName(@RequestParam("name") String name) {
 
         return new ResponseEntity<>(foodService.findByName(name), HttpStatus.OK);
+//        return ResponseEntity.ok(foodService.findByName(name));
     }
 
     @PostMapping("/add-food")

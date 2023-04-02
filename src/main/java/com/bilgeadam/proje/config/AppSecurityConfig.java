@@ -24,7 +24,7 @@ public class AppSecurityConfig {
         httpSecurity
             .authorizeRequests()
                 .antMatchers("/admin/**", "/dashboard", "/manage-roles", "/manage-user", "/add-user", "/manage-food", "/add-food").hasRole("ADMIN")
-                .antMatchers("/profile", "/profile-modify", "/payment", "/comments").hasAnyRole("CUSTOMER", "ADMIN")
+                .antMatchers("/customer/**", "/profile", "/profile-modify", "/payment", "/comments").hasAnyRole("CUSTOMER", "ADMIN")
                 .antMatchers("/").permitAll()
                 .and()
                 .formLogin()

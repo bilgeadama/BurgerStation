@@ -13,8 +13,8 @@ function writeFoodHtml(data) {
             "        <p>" + data[i]['description'] + "</p>\n" +
             "        <p class=\"food-price\">Price: " + data[i]['price'] + "TL</p>\n" +
             "        <div class='food-container-buttons'>\n" +
-            "            <a href=\"./payment?foodId=" + data[i]['foodId'] + "\"><button type=\"button\" class=\"button\">Buy</button></a>\n" +
-            "            <a href=\"./comments/" + data[i]['foodId'] + "\"><button type=\"button\" class=\"button\">Comment</button></a>\n" +
+            "            <a href=\"./payment?id=" +data[i]['id'] + "\"><button type=\"button\" class=\"button\">Buy</button></a>\n" +
+            "            <a href=\"./comments/" + data[i]['id'] + "\"><button type=\"button\" class=\"button\">Comment</button></a>\n" +
             "        </div>\n" +
             "    </div>\n" +
             "</td>\n";

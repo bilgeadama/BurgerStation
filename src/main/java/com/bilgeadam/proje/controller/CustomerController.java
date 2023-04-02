@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -77,12 +78,12 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/payment", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showPaymentPage(@RequestParam("foodId") UUID foodId,
+    public String showPaymentPage(@RequestParam("id") UUID id,
                                   Model model,
                                   HttpSession session) {
 
-        model.addAttribute("food", foodService.findById(foodId));
-        session.setAttribute("price", foodService.findById(foodId).getPrice());
+        model.addAttribute("food", foodService.findById(id));
+        session.setAttribute("price", foodService.findById(id).getPrice());
 
         return "customer/Payment";
     }
@@ -95,7 +96,7 @@ public class CustomerController {
 
 
     @RequestMapping(value = "/comments/{foodId}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String selectFoodID(@PathVariable("foodId") UUID foodId,
+    public String selectFoodId(@PathVariable("foodId") UUID foodId,
                                HttpSession session) {
 
         session.setAttribute("foodId", foodId);
@@ -112,10 +113,12 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/post-comments")
-    public String postComments(@RequestParam("foodId") UUID foodId,
+    public String postComments(@RequestParam("commentId") int commentId,
                                @RequestParam("comment") String postedComment,
-                               Principal principal) {
+                               Principal principal,
+                               HttpSession session) {
 
+        UUID foodId = session.getAttribute("foodId") == null ? UUID.randomUUID() : (UUID) session.getAttribute("foodId");
         CommentDto commentDto = new CommentDto();
         commentDto.setComment(postedComment);
         commentDto.setPostedBy(principal.getName());

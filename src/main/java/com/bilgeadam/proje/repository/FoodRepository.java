@@ -16,7 +16,7 @@ public interface FoodRepository extends BaseRepository<Food, UUID> {
      * @param title of food which has comments
      * @return Food object related with selected title
      */
-    Food findByIgnoreCaseTitle(String title);
+    List<Food> findByTitleContainingIgnoreCase(String title);
 
     /**
      * Example of derived query in spring data jpa

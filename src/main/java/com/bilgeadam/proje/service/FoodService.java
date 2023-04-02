@@ -17,7 +17,7 @@ public interface FoodService {
 
     List<FoodDto> findByCategory(String categoryName);
 
-    FoodDto findByName(String name);
+    List<FoodDto> findByName(String name);
 
     FoodDto findById(UUID uuid);
 

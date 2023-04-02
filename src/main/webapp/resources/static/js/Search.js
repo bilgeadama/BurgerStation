@@ -7,7 +7,7 @@ search.keyup(() => searchFood());
 function searchFood() {
     $.ajax({
         url: 'search-foods-by-name?name=' + search.val(),
-        method: "GET",
+        type: "GET",
         success: data => {
 
             if (data.length === 0) {

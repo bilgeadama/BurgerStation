@@ -7,9 +7,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -57,6 +59,16 @@ public class UserDto extends BaseDto {
      */
     @NotBlank(message = MessageConstants.MESSAGE_NOT_BLANK)
     private String gender;
+
+    /**
+     * Spent information
+     */
+    private String spent;
+
+    /**
+     * Registration Date information
+     */
+    private LocalDate createDate;
 
     /**
      * User enabled information

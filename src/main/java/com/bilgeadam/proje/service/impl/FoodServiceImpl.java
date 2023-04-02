@@ -72,9 +72,9 @@ public class FoodServiceImpl extends BaseService<FoodRepository, FoodMapper, Foo
      * @return
      */
     @Override
-    public FoodDto findByName(String name) {
+    public List<FoodDto> findByName(String name) {
 
-        return mapper.entityToDto(foodRepository.findByIgnoreCaseTitle(name));
+        return mapper.entityListToDtoList(foodRepository.findByTitleContainingIgnoreCase(name));
     }
 
     /**

@@ -17,8 +17,8 @@ function fetchAllUsers() {
                 if (admin) user += ', ' + titleCase(value['roles'][1]['name']);
                 user += '    </td> ';
                 user += admin === true
-                    ? '        <td><a  id="user' + value['id'] + '" class="tomato-text" onclick="' + 'modifyRole(' + value['id'] + ')">Remove Admin</a></td>'
-                    : '        <td><a  id="user' + value['id'] + '" class="green-text" onclick="' + 'modifyRole(' + value['id'] + ')">Add Admin</a></td>'
+                    ? '        <td><a  id="user' + value['id'] + '" class="tomato-text" onclick="' + 'modifyRole( \'' + value['id'] + '\')">Remove Admin</a></td>'
+                    : '        <td><a  id="user' + value['id'] + '" class="green-text" onclick="' + 'modifyRole(\'' + value['id'] + '\')">Add Admin</a></td>'
             })
 
             $('#users-table').append(user);

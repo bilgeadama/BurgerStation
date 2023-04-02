@@ -5,7 +5,7 @@
 <c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="form-container">
-    <form:form action="api/payment-action" id="payment-form" method="GET">
+    <form:form action="payment-action" id="payment-form" method="GET">
         <div>
             <h1 class="payment-form-title">${food.title}</h1>
             <p class="payment-description">${food.description}</p>

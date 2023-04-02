@@ -2,7 +2,7 @@ let paid = false;
 let message = document.getElementById('message');
 let payButton = document.getElementById('pay')
 let priceLabel = document.getElementById('price');
-let price = priceLabel.innerText.slice(0, -2); // remove 'tk'
+let price = priceLabel.innerText.slice(0, -2);
 
 $('#payment-form').validate({
     submitHandler: function (form, event) {
@@ -110,20 +110,20 @@ $("#exp-date").on("keydown", e => {
 
 // Currency click events
 
-$('#taka').click(() => {
+$('#tl').click(() => {
     priceLabel.innerText = price + 'TL';
-    $('#taka').addClass('white-back-text')
+    $('#tl').addClass('white-back-text')
     $('#dollar, #pound').removeClass('white-back-text');
 })
 
 $('#dollar').click(() => {
     priceLabel.innerText = '$' + (price * 0.011).toFixed(2);
     $('#dollar').addClass('white-back-text')
-    $('#taka, #pound').removeClass('white-back-text');
+    $('#tl, #pound').removeClass('white-back-text');
 });
 
 $('#pound').click(() => {
     priceLabel.innerHTML = "&#163;" + (price * 0.0089).toFixed(2);
     $('#pound').addClass('white-back-text')
-    $('#taka, #dollar').removeClass('white-back-text');
+    $('#tl, #dollar').removeClass('white-back-text');
 })

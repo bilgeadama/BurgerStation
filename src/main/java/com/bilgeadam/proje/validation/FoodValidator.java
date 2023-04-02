@@ -4,9 +4,12 @@ import com.bilgeadam.proje.dto.FoodDto;
 import com.bilgeadam.proje.entity.Food;
 import com.bilgeadam.proje.repository.FoodRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -21,9 +24,11 @@ public class FoodValidator {
 
     public void foodSaveValidator(@Valid FoodDto foodDto) {
 
-        Food food = foodRepository.findByIgnoreCaseTitle(foodDto.getTitle());
-        if (Objects.nonNull(food)) {
-            throw new RuntimeException("This Food has been added");
+        List<Food> food = foodRepository.findByTitleContainingIgnoreCase(foodDto.getTitle());
+        if (!CollectionUtils.isEmpty(food)) {
+            throw new RuntimeException("This Food has been added before");
         }
     }
+
+
 }

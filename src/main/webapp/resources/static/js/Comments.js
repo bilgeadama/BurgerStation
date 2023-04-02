@@ -1,6 +1,6 @@
 $(document).ready(() => loadComments());
 
-let ajaxUrl = 'post-comments?commentID=0';
+let ajaxUrl = 'post-comments?commentId=0';
 let message = 'Your comment has been posted.';
 let isReply = false;
 
@@ -61,15 +61,15 @@ function reply(commentId) {
     changeAjaxUrl(commentId);
 }
 
-function changeAjaxUrl(commentID = 0) {
+function changeAjaxUrl(commentId = 0) {
     if (isReply) {
         $('#submit').prop('value', 'Post');
-        ajaxUrl = 'post-comments?commentID=0';
+        ajaxUrl = 'post-comments?commentId=0';
         message = 'Your reply has been posted.';
         isReply = false;
     } else {
         $('#submit').prop('value', 'Reply');
-        ajaxUrl = 'post-comments?&commentID=' + commentID;
+        ajaxUrl = 'post-comments?&commentId=' + commentId;
         message = 'Your comment has been posted.';
         isReply = true;
     }

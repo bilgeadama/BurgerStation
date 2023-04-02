@@ -63,7 +63,7 @@ public class Food extends BaseEntity {
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JoinColumn(name = "food_id",referencedColumnName = "id")
 //            --version - 2 --
-    @OneToMany(mappedBy = "food", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @ToString.Exclude
+    @OneToMany( cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinColumn(name = "food_id")
     private Set<Comment> comments;
 }

@@ -67,7 +67,7 @@ public class User extends BaseEntity {
      * Spent information
      */
     @Column(name = "spent")
-    private String spent;
+    private int spent;
 
     /**
      * User age information

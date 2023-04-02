@@ -14,7 +14,7 @@ function fetchAllFoods() {
                     '    <td>' + value['title'] + '</td> ' +
                     '    <td>' + value['price'] + '</td> ' +
                     '    <td> ' +
-                    '        <a class="tomato-text" onclick="' + 'deleteFood(' + value['id'] + ')">Delete</a> ' +
+                    '        <a class="tomato-text" onclick="' + 'deleteFood(\'' + value['id'] + '\')">Delete</a> ' +
                     '    </td>' +
                     '</tr>';
             })

@@ -30,7 +30,7 @@ public class Comment extends BaseEntity {
     /**
      * Food Relation
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "food_id")
     private Food food;
 }
